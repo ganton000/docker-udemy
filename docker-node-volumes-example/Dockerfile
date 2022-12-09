@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . /app/
 
-VOLUME [ "/app/feedback" ]
-
 EXPOSE 80
 
 CMD [ "node", "server.js" ]
