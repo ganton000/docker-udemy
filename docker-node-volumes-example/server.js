@@ -34,7 +34,7 @@ app.post("/create", async (req, res) => {
     await fs.writeFile(tempFilePath, content);
 
     access(finalFilePath, fs.constants.F_OK, async (err) => {
-        if (err) {
+        if (err) { // does not exist
             console.log(`${finalFilePath} does not exist`);
             await fs.rename(tempFilePath, finalFilePath);
             res.redirect("/");
