@@ -37,7 +37,8 @@ app.post("/create", async (req, res) => {
     access(finalFilePath, fs.constants.F_OK, async (err) => {
         if (err) { // does not exist
             console.log(`${finalFilePath} does not exist`);
-            await fs.rename(tempFilePath, finalFilePath);
+            await fs.copyFile(tempFilePath, finalFilePath);
+            await fs.unlink(tempFilePath);
             res.redirect("/");
         } else {
             res.redirect("/exists");
