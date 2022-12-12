@@ -1,4 +1,4 @@
-#####################
+#########################################
 
 # docker run -d -p 8000:80
 # 	--name feedback-app
@@ -12,7 +12,8 @@
 ## as the path is most specific,
 ## it will not be overriden by the bind-mount; i.e. -v $(pwd):/app,
 ## hence RUN npm install for node_modules doesn't get overridden.
-#######################
+
+###########################################
 
 FROM node
 
@@ -28,4 +29,4 @@ EXPOSE 80
 
 # VOLUME ["/app/node_modules"]
 
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
