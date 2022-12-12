@@ -5,6 +5,7 @@
 #	-v feedback:/app/feedback
 #	-v $(pwd):/app
 #	-v /app/node_modules
+#	-v /app/temp
 #	feedback-node:volumes
 
 ## -v feedback:/app/feedback is a named volume
@@ -12,6 +13,20 @@
 ## as the path is most specific,
 ## it will not be overriden by the bind-mount; i.e. -v $(pwd):/app,
 ## hence RUN npm install for node_modules doesn't get overridden.
+
+### NOTE:
+
+#-v $(pwd):/app:ro
+#(makes bind mount read-only so docker cannot edit the internal file binded file system)
+
+# More specific volumes (sub-volumes) overrides
+# permissioning placed on parent volume
+## i.e. passing the flag
+## -v /app/temp
+## will override the :ro flag on /app
+## also must be specified in CLI over Dockerfile
+
+###
 
 ###########################################
 
@@ -29,6 +44,6 @@ EXPOSE 80
 
 # VOLUME ["/app/node_modules"]
 
-VOLUME [ "/app/temp" ]
+# VOLUME [ "/app/temp" ]
 
 CMD [ "npm", "start" ]
