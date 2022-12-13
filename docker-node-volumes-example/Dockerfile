@@ -33,6 +33,8 @@
 
 ## NOTE
 #ARG occurs during compile time, CMD occurs during runtime
+##can build via
+# --build-arg DEFAULT_PORT=<some_val>
 
 ###########################################
 
