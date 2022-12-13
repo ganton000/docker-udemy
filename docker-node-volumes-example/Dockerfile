@@ -27,6 +27,9 @@
 ## also must be specified in CLI over Dockerfile
 
 ###
+###
+
+#	---env-file ./.env #Points to .env file in root dir
 
 ###########################################
 
@@ -40,7 +43,9 @@ RUN npm install
 
 COPY . /app/
 
-EXPOSE 80
+# ENV PORT 80
+
+EXPOSE $PORT
 
 # VOLUME ["/app/node_modules"]
 
