@@ -31,9 +31,14 @@
 
 #	---env-file ./.env #Points to .env file in root dir
 
+## NOTE
+#ARG occurs during compile time, CMD occurs during runtime
+
 ###########################################
 
 FROM node
+
+ARG DEFAULT_PORT=80
 
 WORKDIR /app
 
@@ -43,7 +48,7 @@ RUN npm install
 
 COPY . /app/
 
-# ENV PORT 80
+ENV PORT $DEFAULT_PORT
 
 EXPOSE $PORT
 
