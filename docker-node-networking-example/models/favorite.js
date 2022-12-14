@@ -3,26 +3,18 @@ const Schema = mongoose.Schema;
 
 const favoritesSchema = new Schema(
     {
-        title: {
+        name: {
             type: String,
             required: true,
         },
-        imageUrl: {
+        url: {
             type: String,
             required: true,
         },
-        content: {
+        type: {
             type: String,
             required: true,
-        },
-        creator: {
-            type: Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
-        },
-    },
-    {
-        timestamps: true,
+        }
     }
 );
 
