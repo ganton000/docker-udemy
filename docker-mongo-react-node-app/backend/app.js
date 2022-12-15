@@ -8,6 +8,8 @@ const morgan = require('morgan');
 
 const Goal = require('./models/goal');
 
+//require("dotenv").config();
+
 const app = express();
 
 const accessLogStream = fs.createWriteStream(
@@ -95,7 +97,7 @@ mongoose.connect(
       console.error(err);
     } else {
       console.log('CONNECTED TO MONGODB');
-      app.listen(80);
+      app.listen(process.env.PORT);
     }
   }
 );
