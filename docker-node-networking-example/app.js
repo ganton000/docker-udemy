@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const axios = require("axios")
+const axios = require("axios");
 
 const Favorite = require("./models/favorite");
 
@@ -14,46 +14,47 @@ app = express();
 app.use(bodyParser.json());
 
 //Routes
-app.get("favorites", async (req, res) => {
-	const favorites = await Favorite.find();
-	res.status(200).json({
-		favorites
-	})
+app.get("/favorites", async (req, res) => {
+    const favorites = await Favorite.find();
+    console.log(favorites);
+    res.status(200).json({
+        favorites,
+    });
 });
 
 app.post("/favorites", async (req, res) => {
-	const favName = req.body.name;
-	const favType = req.body.type;
-	const favUrl = req.body.url;
+    const favName = req.body.name;
+    const favType = req.body.type;
+    const favUrl = req.body.url;
 
-	try {
-		if (favType !== "movie" && favType !== "character") {
-			throw new Error('"type" should be "movie" or "character"!')
-		}
-		const existingFav = await Favorite.findOne({ name: favName });
+    try {
+        if (favType !== "movie" && favType !== "character") {
+            throw new Error('"type" should be "movie" or "character"!');
+        }
+        const existingFav = await Favorite.findOne({ name: favName });
 
-		if (existingFav) {
-			throw new Error("Favorite exists already!")
-		}
-	} catch (error) {
-		res.status(500).json({ message: "Something went wrong." });
-	}
+        if (existingFav) {
+            throw new Error("Favorite exists already!");
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong." });
+    }
 
-	const favorite = new Favorite({
-		name: favName,
-		type: favType,
-		url: favUrl
-	})
+    const favorite = new Favorite({
+        name: favName,
+        type: favType,
+        url: favUrl,
+    });
 
-	try {
-		await favorite.save();
-		res.status(201).json({
-			message: "Favorite saved!",
-			favorite: favorite.toObject()
-		})
-	} catch (error) {
-		res.status(500).json({ message: "Something went wrong." });
-	}
+    try {
+        await favorite.save();
+        return res.status(201).json({
+            message: "Favorite saved!",
+            favorite: favorite.toObject(),
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong." });
+    }
 });
 
 app.get("/movies", async (req, res) => {
@@ -83,16 +84,17 @@ app.get("/people", async (req, res) => {
 });
 
 mongoose
-    .connect(process.env.MONGODB_URI,
-		{ useNewUrlParser: true }
-	)
+    .connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then((result) => {
         const server = app.listen(process.env.PORT, () => {
             console.log(
                 `Server is connected and listening in on PORT: ${process.env.PORT}`
             );
         });
-	})
-	.catch((err) => {
-		console.log(err)
-	})
+    })
+    .catch((err) => {
+        console.log(err);
+    });
