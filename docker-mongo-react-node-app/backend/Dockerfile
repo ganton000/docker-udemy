@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE $PORT
 
+ENV MONGODB_USERNAME=root
+ENV MONGODB_PASSWORD=administrator
+
 CMD ["npm" ,"start"]
