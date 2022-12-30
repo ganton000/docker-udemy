@@ -1,0 +1,130 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+	font-family: 'Inter', 'Poppins', sans-serif;
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.yellow--blob{
+    position: absolute;
+    height: 235px;
+    width: 297px;
+    right: -130px;
+    top: -90px;
+    border-radius: 30%;
+    z-index: 0;
+
+
+    background: #FFFAD1;
+    transform: rotate(-128.49deg);
+}
+
+.blue--blob{
+    position: absolute;
+    height: 235px;
+    width: 297px;
+    left: -90px;
+    bottom: -120px;
+    border-radius: 45%;
+
+    background: #DEEBF8;
+    transform: rotate(-20deg);
+    z-index: 0;
+
+}
+
+  /* Style the h1 element */
+  h1 {
+    /* Add some margin to the element */
+    margin: 10px 0;
+    /* Set the font size */
+    font-size: 24px;
+    /* Make the text bold */
+    font-weight: bold;
+  }
+
+img {
+    margin: 10px 0;
+    width: 300px;
+    height: 300px;
+  }
+
+form {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+input {
+    padding: 10px;
+    font-size: 22px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+button,
+button:link,
+button:visited{
+    display: inline-block;
+    color: #555;
+    margin: 9px auto;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 12px 20px;
+    width: 80%;
+    border-radius: 9px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #555;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 22px;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    background-color: #fdf2e9;
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+
+p {
+    font-size: 22px;
+    color: whitesmoke;
+}
